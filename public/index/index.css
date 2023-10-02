@@ -25,3 +25,23 @@ h1 {
     border-radius: 8px;
     gap: 1rem;
 }
+
+.addBtn {
+    background-color: white;
+    border-radius: 4px;
+    border: none;
+    font-size: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addBtn:hover {
+    background-color: rgb(98, 198, 231);
+}
+
+.addBtn:active {
+    border: 2px solid rgb(0, 83, 190);
+}
