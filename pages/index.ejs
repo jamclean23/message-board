@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <script defer src="index/index.js"></script>
+    <link rel="stylesheet" href="/index/index.css" />
+</head>
+<body>
+    <h1>Posts</h1>
+    <div class="postsDiv">
+        <% messages.forEach((entry) => { %>
+            <p class="post">
+                    <% for (property in entry){     %>
+                        <span><%= `${property}: ${entry[property]}` %></span>
+                    <% } %>
+            </p>
+        <% })%>
+        </div>
+</body>
+</html>

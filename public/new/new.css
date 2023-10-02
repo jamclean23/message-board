@@ -1,0 +1,38 @@
+/* Stylesheet for new post page */
+
+body {
+    background-image: url('/images/forest.webp');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: white;
+    padding: 1rem 8rem;
+    border-radius: 8px;
+    max-width: 40rem;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+}
+
+textarea {
+    resize: none;
+    min-width: 25rem;
+    min-height: 10rem;
+}
+
+input[type="submit"] {
+    margin: 2rem;
+}
