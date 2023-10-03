@@ -9,14 +9,12 @@ const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
 require('dotenv').config();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const mongoConnectionString = `mongodb+srv://jamclean23:${process.env.MONGODB_PASSWORD}@cluster0.wubrpky.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp`;
 
+// Mongoose
+const mongoose = require('mongoose');
 
-// ====== TEST VARIABLES ======
-
-const messages = [
-
- ];
 
 // ====== SETUP ======
 
@@ -37,7 +35,7 @@ app.use(bodyParser.urlencoded({
 // ====== ROUTES ======
 
 app.get('/', (req, res) => {
-    res.render('index/index.ejs', {messages: messages});
+    res.render('index/index.ejs');
 });
 
 app.get('/new', (req, res) => {
@@ -49,13 +47,8 @@ app.get('/messages', async (req, res) => {
     res.send(result);
 })
 
-app.post('/new', (req, res) => {
-    console.log(req.body);
-    messages.push({
-        user: req.body.user,
-        text: req.body.text,
-        date: new Date()
-    });
+app.post('/new', async (req, res) => {
+    await addToDB(req.body.user, req.body.text);
     res.redirect('/');
 });
 
@@ -69,10 +62,35 @@ app.listen(port, () => {
 
 // ====== FUNCTIONS ======
 
+async function addToDB (user, message) {
+
+    mongoose.connect(mongoConnectionString, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        dbName: 'message_board',
+      });
+
+    // Schema
+    const postSchema = new mongoose.Schema({
+        user: String,
+        message: String,
+        date: Date
+    }, {collection: 'posts'});
+    const Post = mongoose.model('Post', postSchema);
+
+    // New post
+    const post = new Post({
+        user,
+        message,
+        date: new Date()
+    });
+    console.log(post);
+    await post.save();
+}
+
 async function retrievePosts () {
     
     // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-    const mongoConnectionString = `mongodb+srv://jamclean23:${process.env.MONGODB_PASSWORD}@cluster0.wubrpky.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp`;
     const client = new MongoClient(mongoConnectionString, {
         serverApi: {
             version: ServerApiVersion.v1,

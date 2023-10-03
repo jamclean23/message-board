@@ -25,6 +25,7 @@ document.querySelector('.signInBtn').addEventListener('click', handleSignIn);
 
 // ====== FUNCTIONS ======
 
+
 function handleSignOut () {
     signOut(getAuth());
 }

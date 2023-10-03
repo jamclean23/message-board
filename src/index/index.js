@@ -34,6 +34,7 @@ async function updateMessages () {
     const messages = await response.json();
 
     const postsDiv = document.querySelector('.postsDiv');
+    postsDiv.innerHTML = '';
 
     messages.forEach((message, index) => {
         const newPost = document.createElement('p');
