@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "buildDev": "webpack --config ./config/webpack.dev.js && cp ./dist/index/index.js ./public/index/index.js && cp ./dist/new/new.js ./public/new/new.js",
+    "buildDev": "webpack --config ./config/webpack.dev.js && copy .\\dist\\index\\index.js .\\public\\index\\index.js && copy .\\dist\\new\\new.js .\\public\\new\\new.js",
     "buildProd": "webpack --config ./config/webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./server.js"

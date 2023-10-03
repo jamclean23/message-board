@@ -2,7 +2,7 @@
 
 // ====== VARIABLES ======
 
-const messagesEndpoint = 'http://127.0.0.1:3000/messages';
+const messagesEndpoint = 'http://47.134.203.172/messages';
 
 
 // ====== MAIN ======
