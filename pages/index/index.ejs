@@ -12,9 +12,8 @@
     <div class="postsDiv">
         <% messages.forEach((entry) => { %>
             <p class="post">
-                    <% for (property in entry){     %>
-                        <span><%= `${property}: ${entry[property]}` %></span>
-                    <% } %>
+                    <span class="user"><%= entry.user%>:</span>
+                    <span class="message"><%= entry.text %></span>
             </p>
         <% })%>
     </div>

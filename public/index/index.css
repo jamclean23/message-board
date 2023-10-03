@@ -18,7 +18,8 @@ h1 {
 
 .post {
     background-color: white;
-    padding: 2rem 3rem;
+    padding: 1rem 2rem;
+    min-width: 20rem;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -44,4 +45,8 @@ h1 {
 
 .addBtn:active {
     border: 2px solid rgb(0, 83, 190);
+}
+
+.user {
+    font-weight: bold;
 }
